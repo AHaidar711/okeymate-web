@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OkeyMate herunterladen</title>
+  <link rel="icon" href="../assets/icon.png" />
+  <style>
+    body {
+      font-family: -apple-system, 'Inter', sans-serif;
+      background: #1C3F73;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 24px;
+    }
+    img {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+    h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 8px; }
+    p  { color: rgba(255,255,255,0.65); margin-bottom: 32px; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top-color: #E07820;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .fallback { margin-top: 32px; }
+    .fallback a {
+      color: #E07820;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="../assets/icon.png" alt="OkeyMate" />
+    <h1>OkeyMate</h1>
+    <p>Du wirst weitergeleitet…</p>
+    <div class="spinner"></div>
+    <div class="fallback" id="fallback" style="display:none">
+      <a href="https://apps.apple.com" id="ios-link">App Store öffnen</a>
+      &nbsp;·&nbsp;
+      <a href="https://play.google.com" id="android-link">Play Store öffnen</a>
+    </div>
+  </div>
+
+  <script>
+    var IOS_URL     = "https://apps.apple.com";    // ← App Store URL eintragen
+    var ANDROID_URL = "https://play.google.com";   // ← Play Store URL eintragen
+
+    var ua = navigator.userAgent || "";
+    var target = /Android/i.test(ua) ? ANDROID_URL : IOS_URL;
+
+    document.getElementById("ios-link").href     = IOS_URL;
+    document.getElementById("android-link").href = ANDROID_URL;
+
+    // Weiterleitung nach 600ms
+    setTimeout(function() {
+      window.location.href = target;
+    }, 600);
+
+    // Falls Weiterleitung blockiert → Fallback-Links zeigen
+    setTimeout(function() {
+      document.getElementById("fallback").style.display = "block";
+    }, 2000);
+  </script>
+</body>
+</html>
