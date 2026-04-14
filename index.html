@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OkeyMate – Dein Okey Spielbegleiter</title>
-  <meta name="description" content="OkeyMate – Punkte notieren, Runden zählen und würfeln. Die kostenlose Begleit-App für Okey." />
-
-  <!-- Open Graph (für Link-Vorschau in WhatsApp, Instagram etc.) -->
+  <title>OkeyMate</title>
+  <meta name="description" content="OkeyMate – Punkte notieren, Runden zählen und würfeln." />
   <meta property="og:title" content="OkeyMate" />
   <meta property="og:description" content="Dein Okey Spielbegleiter – kostenlos für iOS" />
   <meta property="og:image" content="assets/icon.png" />
   <meta property="og:url" content="https://okeymate.app" />
-
   <link rel="icon" href="assets/icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
@@ -23,14 +20,8 @@
       --light:  #f4f7fc;
       --white:  #ffffff;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--white);
-      color: #1a1a2e;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: #1a1a2e; }
 
     /* ── NAV ── */
     nav {
@@ -39,14 +30,56 @@
       gap: 12px;
       padding: 18px 40px;
       background: var(--blue);
+      position: relative;
     }
     nav img { width: 40px; height: 40px; border-radius: 10px; }
-    nav span {
-      color: var(--white);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+    nav .nav-title { color: var(--white); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.3px; flex: 1; }
+
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher { position: relative; }
+    .lang-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      color: white;
+      border-radius: 10px;
+      padding: 7px 14px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      transition: background 0.15s;
     }
+    .lang-btn:hover { background: rgba(255,255,255,0.25); }
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      overflow: hidden;
+      min-width: 150px;
+      z-index: 100;
+    }
+    .lang-dropdown.open { display: block; }
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a1a2e;
+      transition: background 0.1s;
+    }
+    .lang-option:hover { background: var(--light); }
+    .lang-option.active { color: var(--blue); }
+    .lang-option .check { margin-left: auto; color: var(--blue); font-size: 0.8rem; }
 
     /* ── HERO ── */
     .hero {
@@ -55,160 +88,43 @@
       text-align: center;
       padding: 80px 24px 100px;
     }
-    .hero img {
-      width: 120px;
-      height: 120px;
-      border-radius: 26px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      margin-bottom: 28px;
-    }
-    .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
-      font-weight: 900;
-      letter-spacing: -1px;
-      margin-bottom: 16px;
-    }
+    .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 20px 60px rgba(0,0,0,0.35); margin-bottom: 28px; }
+    .hero h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; letter-spacing: -1px; margin-bottom: 16px; }
     .hero h1 span { color: var(--orange); }
-    .hero p {
-      font-size: 1.15rem;
-      color: rgba(255,255,255,0.75);
-      max-width: 480px;
-      margin: 0 auto 40px;
-      line-height: 1.6;
-    }
+    .hero p { font-size: 1.15rem; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0 auto 40px; line-height: 1.6; }
 
-    /* ── DOWNLOAD BUTTONS ── */
-    .dl-buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: transform 0.15s, opacity 0.15s;
-    }
+    /* ── BUTTONS ── */
+    .dl-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 14px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: transform 0.15s, opacity 0.15s; }
     .btn:hover { transform: translateY(-2px); opacity: 0.92; }
-    .btn-primary {
-      background: var(--orange);
-      color: var(--white);
-    }
-    .btn-secondary {
-      background: rgba(255,255,255,0.12);
-      color: var(--white);
-      border: 1.5px solid rgba(255,255,255,0.3);
-    }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-secondary { background: rgba(255,255,255,0.12); color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); }
     .btn svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
-
-    /* ── BADGE (coming soon) ── */
-    .badge {
-      display: inline-block;
-      background: rgba(255,255,255,0.1);
-      color: rgba(255,255,255,0.6);
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 4px 12px;
-      border-radius: 999px;
-      margin-top: 18px;
-      letter-spacing: 0.5px;
-    }
+    .badge { display: inline-block; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 999px; margin-top: 18px; letter-spacing: 0.5px; }
 
     /* ── FEATURES ── */
-    .features {
-      background: var(--light);
-      padding: 80px 24px;
-      text-align: center;
-    }
-    .features h2 {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--blue);
-      margin-bottom: 48px;
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .feature-card {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 32px 24px;
-      box-shadow: 0 4px 20px rgba(28,63,115,0.07);
-    }
-    .feature-card .icon {
-      font-size: 2.4rem;
-      margin-bottom: 14px;
-    }
-    .feature-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--blue);
-      margin-bottom: 8px;
-    }
-    .feature-card p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.55;
-    }
+    .features { background: var(--light); padding: 80px 24px; text-align: center; }
+    .features h2 { font-size: 1.9rem; font-weight: 800; color: var(--blue); margin-bottom: 48px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .feature-card { background: var(--white); border-radius: 18px; padding: 32px 24px; box-shadow: 0 4px 20px rgba(28,63,115,0.07); }
+    .feature-card .icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--blue); margin-bottom: 8px; }
+    .feature-card p { font-size: 0.9rem; color: #666; line-height: 1.55; }
 
-    /* ── QR SECTION ── */
-    .qr-section {
-      padding: 80px 24px;
-      text-align: center;
-      background: var(--white);
-    }
-    .qr-section h2 {
-      font-size: 1.9rem;
-      font-weight: 800;
-      color: var(--blue);
-      margin-bottom: 12px;
-    }
-    .qr-section p {
-      color: #666;
-      margin-bottom: 36px;
-      font-size: 0.95rem;
-    }
-    #qrcode {
-      display: inline-block;
-      padding: 20px;
-      background: var(--white);
-      border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(28,63,115,0.12);
-    }
+    /* ── QR ── */
+    .qr-section { padding: 80px 24px; text-align: center; background: var(--white); }
+    .qr-section h2 { font-size: 1.9rem; font-weight: 800; color: var(--blue); margin-bottom: 12px; }
+    .qr-section p { color: #666; margin-bottom: 36px; font-size: 0.95rem; }
+    #qrcode { display: inline-block; padding: 20px; background: var(--white); border-radius: 20px; box-shadow: 0 8px 32px rgba(28,63,115,0.12); }
     #qrcode canvas, #qrcode img { display: block; }
 
-    /* ── LANGUAGES ── */
-    .languages {
-      background: var(--blue);
-      color: var(--white);
-      text-align: center;
-      padding: 48px 24px;
-    }
-    .languages p {
-      font-size: 1rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 16px;
-    }
+    /* ── APP LANGUAGES SECTION ── */
+    .app-languages { background: var(--blue); color: var(--white); text-align: center; padding: 48px 24px; }
+    .app-languages p { font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 16px; }
     .flags { font-size: 2rem; letter-spacing: 10px; }
 
     /* ── FOOTER ── */
-    footer {
-      background: #0f2347;
-      color: rgba(255,255,255,0.45);
-      text-align: center;
-      padding: 28px 24px;
-      font-size: 0.82rem;
-    }
+    footer { background: #0f2347; color: rgba(255,255,255,0.45); text-align: center; padding: 28px 24px; font-size: 0.82rem; }
     footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
     footer a:hover { color: var(--orange); }
 
@@ -223,95 +139,238 @@
   <!-- NAV -->
   <nav>
     <img src="assets/icon.png" alt="OkeyMate Icon" />
-    <span>OkeyMate</span>
+    <span class="nav-title">OkeyMate</span>
+    <div class="lang-switcher">
+      <button class="lang-btn" id="lang-btn" onclick="toggleDropdown()">
+        <span id="lang-flag">🇩🇪</span>
+        <span id="lang-label">DE</span>
+      </button>
+      <div class="lang-dropdown" id="lang-dropdown">
+        <div class="lang-option" onclick="setLang('de')">🇩🇪 <span>Deutsch</span> <span class="check" id="check-de">✓</span></div>
+        <div class="lang-option" onclick="setLang('tr')">🇹🇷 <span>Türkçe</span> <span class="check" id="check-tr" style="display:none">✓</span></div>
+        <div class="lang-option" onclick="setLang('en')">🇬🇧 <span>English</span> <span class="check" id="check-en" style="display:none">✓</span></div>
+      </div>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <img src="assets/icon.png" alt="OkeyMate" />
-    <h1>Okey spielen.<br /><span>Einfach besser.</span></h1>
-    <p>Punkte notieren, Runden zählen, würfeln – dein smarter Begleiter für jedes Okey-Spiel. Kostenlos.</p>
-
+    <h1 id="hero-title">Okey spielen.<br /><span id="hero-title-span">Einfach besser.</span></h1>
+    <p id="hero-sub">Punkte notieren, Runden zählen, würfeln – dein smarter Begleiter für jedes Okey-Spiel. Kostenlos.</p>
     <div class="dl-buttons">
-      <!-- App Store Link → später echte URL eintragen -->
       <a href="https://apps.apple.com" class="btn btn-primary" id="appstore-btn">
         <svg viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        App Store
+        <span id="btn-appstore">App Store</span>
       </a>
-      <!-- Play Store → falls Android App kommt -->
       <a href="https://play.google.com" class="btn btn-secondary" id="playstore-btn">
         <svg viewBox="0 0 24 24"><path d="M3.18 23.76c.35.2.74.24 1.12.12l12.14-6.98-2.64-2.64-10.62 9.5zm-1.12-20.5C2 3.52 2 3.78 2 4.08v15.84c0 .3 0 .56.06.82l10.8-10.8L2.06 3.26zM20.12 10.2l-2.4-1.38-2.98 2.98 2.98 2.98 2.42-1.4c.68-.4.68-1.78-.02-2.18zM4.3.12C3.92 0 3.53.04 3.18.24l10.8 10.8L16.62 8.4 4.3.12z"/></svg>
-        Google Play
+        <span id="btn-playstore">Google Play</span>
       </a>
     </div>
-    <div class="badge">Bald verfügbar im App Store</div>
+    <div class="badge" id="badge-soon">Bald verfügbar im App Store</div>
   </section>
 
   <!-- FEATURES -->
   <section class="features">
-    <h2>Alles was du brauchst</h2>
+    <h2 id="features-title">Alles was du brauchst</h2>
     <div class="feature-grid">
       <div class="feature-card">
         <div class="icon">📝</div>
-        <h3>Punktezettel</h3>
-        <p>Übersichtlicher Notizblock mit Custom-Numpad für schnelle Punkteeingabe.</p>
+        <h3 id="f1-title">Punktezettel</h3>
+        <p id="f1-desc">Übersichtlicher Notizblock mit Custom-Numpad für schnelle Punkteeingabe.</p>
       </div>
       <div class="feature-card">
         <div class="icon">🎲</div>
-        <h3>Würfeln</h3>
-        <p>Zwei Würfel direkt in der App – kein echtes Würfeln mehr nötig.</p>
+        <h3 id="f2-title">Würfeln</h3>
+        <p id="f2-desc">Zwei Würfel direkt in der App – kein echtes Würfeln mehr nötig.</p>
       </div>
       <div class="feature-card">
         <div class="icon">👥</div>
-        <h3>Teams & Einzeln</h3>
-        <p>Spielmodus frei wählbar: alle gegen alle oder in 2er-Teams.</p>
+        <h3 id="f3-title">Teams & Einzeln</h3>
+        <p id="f3-desc">Spielmodus frei wählbar: alle gegen alle oder in 2er-Teams.</p>
       </div>
       <div class="feature-card">
         <div class="icon">🏆</div>
-        <h3>Spielhistorie</h3>
-        <p>Alle beendeten Spiele mit Punktetabelle und Gewinner-Markierung.</p>
+        <h3 id="f4-title">Spielhistorie</h3>
+        <p id="f4-desc">Alle beendeten Spiele mit Punktetabelle und Gewinner-Markierung.</p>
       </div>
       <div class="feature-card">
         <div class="icon">💾</div>
-        <h3>Mehrere Spiele</h3>
-        <p>Speichere mehrere laufende Spiele gleichzeitig – nichts geht verloren.</p>
+        <h3 id="f5-title">Mehrere Spiele</h3>
+        <p id="f5-desc">Speichere mehrere laufende Spiele gleichzeitig – nichts geht verloren.</p>
       </div>
       <div class="feature-card">
         <div class="icon">🌍</div>
-        <h3>3 Sprachen</h3>
-        <p>Deutsch, Türkisch und Englisch – umschaltbar per Knopfdruck.</p>
+        <h3 id="f6-title">3 Sprachen</h3>
+        <p id="f6-desc">Deutsch, Türkisch und Englisch – umschaltbar per Knopfdruck.</p>
       </div>
     </div>
   </section>
 
-  <!-- QR CODE -->
+  <!-- QR -->
   <section class="qr-section">
-    <h2>Direkt herunterladen</h2>
-    <p>QR-Code scannen und sofort im Store öffnen</p>
+    <h2 id="qr-title">Direkt herunterladen</h2>
+    <p id="qr-sub">QR-Code scannen und sofort im Store öffnen</p>
     <div id="qrcode"></div>
   </section>
 
-  <!-- SPRACHEN -->
-  <section class="languages">
-    <p>Verfügbar in</p>
+  <!-- APP LANGUAGES -->
+  <section class="app-languages">
+    <p id="avail-in">Verfügbar in</p>
     <div class="flags">🇩🇪 🇹🇷 🇬🇧</div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2026 OkeyMate &nbsp;·&nbsp; <a href="mailto:kontakt@okeymate.app">Kontakt</a></p>
+    <p>© 2026 OkeyMate &nbsp;·&nbsp; <a href="mailto:kontakt@okeymate.app" id="footer-contact">Kontakt</a></p>
   </footer>
 
-  <!-- QR Code Bibliothek (kein npm nötig, läuft direkt im Browser) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script>
-    // Smart Redirect: iOS → App Store, Android → Play Store
-    // URL hier später auf echten App Store Link ändern
-    var IOS_URL     = "https://apps.apple.com";      // ← App Store URL eintragen
-    var ANDROID_URL = "https://play.google.com";     // ← Play Store URL eintragen
+    // ── STORE URLs ──
+    var IOS_URL      = "https://apps.apple.com";
+    var ANDROID_URL  = "https://play.google.com";
     var DOWNLOAD_URL = "https://okeymate.app/download";
 
-    // QR Code generiert auf die /download Seite (die dann weiterleitet)
+    // ── TRANSLATIONS ──
+    var T = {
+      de: {
+        htmlLang:       "de",
+        flag:           "🇩🇪", label: "DE",
+        pageTitle:      "OkeyMate – Dein Okey Spielbegleiter",
+        heroTitle:      "Okey spielen.",
+        heroSpan:       "Einfach besser.",
+        heroSub:        "Punkte notieren, Runden zählen, würfeln – dein smarter Begleiter für jedes Okey-Spiel. Kostenlos.",
+        btnAppStore:    "App Store",
+        btnPlayStore:   "Google Play",
+        badgeSoon:      "Bald verfügbar im App Store",
+        featuresTitle:  "Alles was du brauchst",
+        f1t: "Punktezettel",       f1d: "Übersichtlicher Notizblock mit Custom-Numpad für schnelle Punkteeingabe.",
+        f2t: "Würfeln",            f2d: "Zwei Würfel direkt in der App – kein echtes Würfeln mehr nötig.",
+        f3t: "Teams & Einzeln",    f3d: "Spielmodus frei wählbar: alle gegen alle oder in 2er-Teams.",
+        f4t: "Spielhistorie",      f4d: "Alle beendeten Spiele mit Punktetabelle und Gewinner-Markierung.",
+        f5t: "Mehrere Spiele",     f5d: "Speichere mehrere laufende Spiele gleichzeitig – nichts geht verloren.",
+        f6t: "3 Sprachen",         f6d: "Deutsch, Türkisch und Englisch – umschaltbar per Knopfdruck.",
+        qrTitle:        "Direkt herunterladen",
+        qrSub:          "QR-Code scannen und sofort im Store öffnen",
+        availIn:        "Verfügbar in",
+        contact:        "Kontakt"
+      },
+      tr: {
+        htmlLang:       "tr",
+        flag:           "🇹🇷", label: "TR",
+        pageTitle:      "OkeyMate – Okey Oyun Asistanın",
+        heroTitle:      "Okey oyna.",
+        heroSpan:       "Çok daha kolay.",
+        heroSub:        "Puan yaz, tur say, zar at – her okey oyunu için akıllı asistanın. Ücretsiz.",
+        btnAppStore:    "App Store",
+        btnPlayStore:   "Google Play",
+        badgeSoon:      "Yakında App Store'da",
+        featuresTitle:  "İhtiyacın olan her şey",
+        f1t: "Puan Defteri",       f1d: "Hızlı puan girişi için özel sayı tuş takımlı düzenli not defteri.",
+        f2t: "Zar At",             f2d: "Uygulamada iki zar – artık gerçek zara gerek yok.",
+        f3t: "Takım & Bireysel",   f3d: "Oyun modu serbestçe seçilebilir: herkese karşı veya 2'li takımlar.",
+        f4t: "Oyun Geçmişi",       f4d: "Tüm biten oyunlar puan tablosu ve kazanan işaretiyle.",
+        f5t: "Birden Fazla Oyun",  f5d: "Aynı anda birden fazla oyun kaydet – hiçbir şey kaybolmaz.",
+        f6t: "3 Dil",              f6d: "Almanca, Türkçe ve İngilizce – tek tuşla değiştirilebilir.",
+        qrTitle:        "Hemen indir",
+        qrSub:          "QR kodu tarat ve mağazada aç",
+        availIn:        "Mevcut diller",
+        contact:        "İletişim"
+      },
+      en: {
+        htmlLang:       "en",
+        flag:           "🇬🇧", label: "EN",
+        pageTitle:      "OkeyMate – Your Okey Game Companion",
+        heroTitle:      "Play Okey.",
+        heroSpan:       "Better than ever.",
+        heroSub:        "Track scores, count rounds, roll dice – your smart companion for every Okey game. Free.",
+        btnAppStore:    "App Store",
+        btnPlayStore:   "Google Play",
+        badgeSoon:      "Coming soon to the App Store",
+        featuresTitle:  "Everything you need",
+        f1t: "Scoresheet",         f1d: "Clean notepad with custom numpad for fast score entry.",
+        f2t: "Roll Dice",          f2d: "Two dice built right into the app – no physical dice needed.",
+        f3t: "Teams & Solo",       f3d: "Choose your game mode: free-for-all or 2-player teams.",
+        f4t: "Game History",       f4d: "All finished games with full score table and winner highlight.",
+        f5t: "Multiple Games",     f5d: "Save multiple active games at once – nothing gets lost.",
+        f6t: "3 Languages",        f6d: "German, Turkish and English – switch with one tap.",
+        qrTitle:        "Download now",
+        qrSub:          "Scan the QR code to open in store",
+        availIn:        "Available in",
+        contact:        "Contact"
+      }
+    };
+
+    // ── APPLY LANGUAGE ──
+    var currentLang = "de";
+
+    function applyLang(lang) {
+      var t = T[lang];
+      currentLang = lang;
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.pageTitle;
+
+      document.getElementById("lang-flag").textContent  = t.flag;
+      document.getElementById("lang-label").textContent = t.label;
+
+      document.getElementById("hero-title").childNodes[0].textContent = t.heroTitle + "\n";
+      document.getElementById("hero-title-span").textContent = t.heroSpan;
+      document.getElementById("hero-sub").textContent        = t.heroSub;
+      document.getElementById("btn-appstore").textContent    = t.btnAppStore;
+      document.getElementById("btn-playstore").textContent   = t.btnPlayStore;
+      document.getElementById("badge-soon").textContent      = t.badgeSoon;
+      document.getElementById("features-title").textContent  = t.featuresTitle;
+      document.getElementById("f1-title").textContent = t.f1t; document.getElementById("f1-desc").textContent = t.f1d;
+      document.getElementById("f2-title").textContent = t.f2t; document.getElementById("f2-desc").textContent = t.f2d;
+      document.getElementById("f3-title").textContent = t.f3t; document.getElementById("f3-desc").textContent = t.f3d;
+      document.getElementById("f4-title").textContent = t.f4t; document.getElementById("f4-desc").textContent = t.f4d;
+      document.getElementById("f5-title").textContent = t.f5t; document.getElementById("f5-desc").textContent = t.f5d;
+      document.getElementById("f6-title").textContent = t.f6t; document.getElementById("f6-desc").textContent = t.f6d;
+      document.getElementById("qr-title").textContent   = t.qrTitle;
+      document.getElementById("qr-sub").textContent     = t.qrSub;
+      document.getElementById("avail-in").textContent   = t.availIn;
+      document.getElementById("footer-contact").textContent = t.contact;
+
+      // checkmarks
+      ["de","tr","en"].forEach(function(l) {
+        document.getElementById("check-" + l).style.display = (l === lang) ? "inline" : "none";
+      });
+
+      localStorage.setItem("okeymate-lang", lang);
+    }
+
+    function setLang(lang) {
+      applyLang(lang);
+      document.getElementById("lang-dropdown").classList.remove("open");
+    }
+
+    function toggleDropdown() {
+      document.getElementById("lang-dropdown").classList.toggle("open");
+    }
+
+    // Close dropdown on outside click
+    document.addEventListener("click", function(e) {
+      if (!e.target.closest(".lang-switcher")) {
+        document.getElementById("lang-dropdown").classList.remove("open");
+      }
+    });
+
+    // ── AUTO DETECT LANGUAGE ──
+    function detectLang() {
+      var saved = localStorage.getItem("okeymate-lang");
+      if (saved && T[saved]) return saved;
+      var nav = (navigator.language || navigator.userLanguage || "de").toLowerCase();
+      if (nav.startsWith("tr")) return "tr";
+      if (nav.startsWith("en")) return "en";
+      return "de";
+    }
+
+    applyLang(detectLang());
+
+    // ── QR CODE ──
     new QRCode(document.getElementById("qrcode"), {
       text: DOWNLOAD_URL,
       width: 200,
@@ -321,16 +380,12 @@
       correctLevel: QRCode.CorrectLevel.H
     });
 
-    // Buttons je nach Plattform hervorheben
+    // ── SMART PLATFORM BUTTONS ──
     var ua = navigator.userAgent || "";
-    var isIOS     = /iPhone|iPad|iPod/i.test(ua);
-    var isAndroid = /Android/i.test(ua);
-
-    if (isIOS) {
+    if (/iPhone|iPad|iPod/i.test(ua)) {
       document.getElementById("appstore-btn").href = IOS_URL;
-      document.getElementById("appstore-btn").classList.replace("btn-primary", "btn-primary");
       document.getElementById("playstore-btn").style.display = "none";
-    } else if (isAndroid) {
+    } else if (/Android/i.test(ua)) {
       document.getElementById("playstore-btn").href = ANDROID_URL;
       document.getElementById("appstore-btn").style.display = "none";
     }
