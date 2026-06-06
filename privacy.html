@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – OkeyMate</title>
+  <meta name="description" content="Datenschutzerklärung der OkeyMate iOS App." />
+  <link rel="icon" href="assets/icon.png" />
+  <style>
+    :root {
+      --blue:   #1C3F73;
+      --orange: #E07820;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1a1a1a;
+      background: #f9f9f9;
+      line-height: 1.7;
+    }
+    header {
+      background: var(--blue);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    header img { width: 36px; height: 36px; border-radius: 8px; }
+    header a {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    main {
+      max-width: 720px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+    }
+    h1 { font-size: 1.6rem; color: var(--blue); margin-bottom: 6px; }
+    .updated { color: #888; font-size: .9rem; margin-bottom: 32px; }
+    h2 { font-size: 1.1rem; color: var(--blue); margin: 28px 0 8px; }
+    p { margin-bottom: 12px; }
+    ul { margin: 8px 0 12px 20px; }
+    li { margin-bottom: 6px; }
+    .badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: .85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    a { color: var(--orange); }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #999;
+      font-size: .85rem;
+    }
+
+    /* Sprach-Tabs */
+    .lang-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+    .lang-tab {
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 2px solid var(--blue);
+      background: #fff;
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: .9rem;
+    }
+    .lang-tab.active { background: var(--blue); color: #fff; }
+    .lang-content { display: none; }
+    .lang-content.active { display: block; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="assets/icon.png" alt="OkeyMate Icon" />
+  <a href="/">OkeyMate</a>
+</header>
+
+<main>
+  <h1 id="page-title">Datenschutzerklärung</h1>
+  <p class="updated" id="page-updated">Letzte Aktualisierung: Juni 2026</p>
+
+  <div class="lang-tabs">
+    <button class="lang-tab active" onclick="setLang('de')">🇩🇪 Deutsch</button>
+    <button class="lang-tab" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+    <button class="lang-tab" onclick="setLang('en')">🇬🇧 English</button>
+  </div>
+
+  <!-- DEUTSCH -->
+  <div class="lang-content active" id="lang-de">
+    <span class="badge">✓ Keine personenbezogenen Daten gesammelt</span>
+
+    <h2>1. Überblick</h2>
+    <p>OkeyMate ist eine iOS-App, die als Spielbegleiter für das Okey-Brettspiel dient. Der Schutz deiner Daten ist uns wichtig. Diese Erklärung beschreibt, welche Daten die App erfasst und wie sie verwendet werden.</p>
+
+    <h2>2. Datenerhebung in der App</h2>
+    <p>Die OkeyMate App erhebt <strong>keine personenbezogenen Daten</strong>. Insbesondere:</p>
+    <ul>
+      <li>Es gibt keinen Account, keine Anmeldung, keine Registrierung.</li>
+      <li>Es werden keine Namen, E-Mail-Adressen oder andere Identifikatoren erfasst.</li>
+      <li>Es werden keine Gerätekennungen (IDFA, IDFV o.ä.) erhoben oder weitergegeben.</li>
+      <li>Es gibt kein Tracking, keine Analytics und keine Werbung innerhalb der App.</li>
+    </ul>
+
+    <h2>3. Lokale Datenspeicherung</h2>
+    <p>Spielstände, Spielernamen und Einstellungen werden ausschließlich <strong>lokal auf deinem Gerät</strong> gespeichert (im Documents-Verzeichnis der App). Diese Daten verlassen dein Gerät nicht und werden nicht an Server übertragen.</p>
+    <p>Die Daten können jederzeit durch Deinstallation der App vollständig gelöscht werden.</p>
+
+    <h2>4. Website (okeymate.app)</h2>
+    <p>Unsere Website verwendet <strong>Umami Analytics</strong> — ein datenschutzfreundliches, cookiefreies Analysetool. Es werden keine personenbezogenen Daten erfasst und keine Cookies gesetzt. IP-Adressen werden nicht gespeichert.</p>
+
+    <h2>5. Drittanbieter</h2>
+    <p>Die App selbst enthält keine Drittanbieter-SDKs, keine Werbebibliotheken und keine Tracking-Frameworks.</p>
+
+    <h2>6. Kinder</h2>
+    <p>OkeyMate richtet sich an alle Altersgruppen. Da keine Daten erfasst werden, gelten keine besonderen Einschränkungen für die Nutzung durch Minderjährige.</p>
+
+    <h2>7. Änderungen</h2>
+    <p>Änderungen dieser Datenschutzerklärung werden auf dieser Seite veröffentlicht.</p>
+
+    <h2>8. Kontakt</h2>
+    <p>Bei Fragen: <a href="mailto:ali.ha.al711@gmail.com">ali.ha.al711@gmail.com</a></p>
+  </div>
+
+  <!-- TÜRKISCH -->
+  <div class="lang-content" id="lang-tr">
+    <span class="badge">✓ Kişisel veri toplanmaz</span>
+
+    <h2>1. Genel Bakış</h2>
+    <p>OkeyMate, Okey oyunu için bir skor takip uygulamasıdır. Gizliliğinize saygı duyuyoruz. Bu politika, uygulamanın hangi verileri topladığını ve nasıl kullandığını açıklar.</p>
+
+    <h2>2. Uygulama İçinde Veri Toplama</h2>
+    <p>OkeyMate uygulaması <strong>hiçbir kişisel veri toplamaz</strong>. Özellikle:</p>
+    <ul>
+      <li>Hesap, giriş veya kayıt sistemi yoktur.</li>
+      <li>İsim, e-posta veya başka tanımlayıcı toplanmaz.</li>
+      <li>Reklam tanımlayıcıları (IDFA vb.) toplanmaz veya paylaşılmaz.</li>
+      <li>Uygulama içinde izleme, analitik veya reklam yoktur.</li>
+    </ul>
+
+    <h2>3. Yerel Veri Depolama</h2>
+    <p>Oyun skorları, oyuncu isimleri ve ayarlar yalnızca <strong>cihazınızda yerel olarak</strong> saklanır. Bu veriler cihazınızdan çıkmaz ve sunuculara iletilmez.</p>
+    <p>Uygulamayı kaldırarak tüm veriler silinebilir.</p>
+
+    <h2>4. Web Sitesi (okeymate.app)</h2>
+    <p>Web sitemiz, çerez kullanmayan ve kişisel veri toplamayan <strong>Umami Analytics</strong> kullanmaktadır. IP adresleri kaydedilmez.</p>
+
+    <h2>5. Üçüncü Taraflar</h2>
+    <p>Uygulama; üçüncü taraf SDK, reklam kütüphanesi veya izleme çerçevesi içermemektedir.</p>
+
+    <h2>6. Çocuklar</h2>
+    <p>OkeyMate her yaş grubuna yöneliktir. Hiçbir veri toplanmadığından çocukların kullanımında özel bir kısıtlama yoktur.</p>
+
+    <h2>7. Değişiklikler</h2>
+    <p>Bu politikadaki değişiklikler bu sayfada yayımlanacaktır.</p>
+
+    <h2>8. İletişim</h2>
+    <p>Sorularınız için: <a href="mailto:ali.ha.al711@gmail.com">ali.ha.al711@gmail.com</a></p>
+  </div>
+
+  <!-- ENGLISH -->
+  <div class="lang-content" id="lang-en">
+    <span class="badge">✓ No personal data collected</span>
+
+    <h2>1. Overview</h2>
+    <p>OkeyMate is an iOS companion app for the Okey board game. We respect your privacy. This policy describes what data the app collects and how it is used.</p>
+
+    <h2>2. Data Collection in the App</h2>
+    <p>OkeyMate collects <strong>no personal data</strong>. Specifically:</p>
+    <ul>
+      <li>There is no account, login, or registration system.</li>
+      <li>No names, email addresses, or other identifiers are collected.</li>
+      <li>No device identifiers (IDFA, IDFV, etc.) are collected or shared.</li>
+      <li>There is no tracking, analytics, or advertising within the app.</li>
+    </ul>
+
+    <h2>3. Local Data Storage</h2>
+    <p>Game scores, player names, and settings are stored exclusively <strong>locally on your device</strong>. This data never leaves your device and is not transmitted to any server.</p>
+    <p>All data can be permanently deleted by uninstalling the app.</p>
+
+    <h2>4. Website (okeymate.app)</h2>
+    <p>Our website uses <strong>Umami Analytics</strong> — a privacy-friendly, cookie-free analytics tool. No personal data is collected, no cookies are set, and IP addresses are not stored.</p>
+
+    <h2>5. Third Parties</h2>
+    <p>The app contains no third-party SDKs, advertising libraries, or tracking frameworks.</p>
+
+    <h2>6. Children</h2>
+    <p>OkeyMate is suitable for all ages. Since no data is collected, there are no special restrictions for use by minors.</p>
+
+    <h2>7. Changes</h2>
+    <p>Any changes to this policy will be published on this page.</p>
+
+    <h2>8. Contact</h2>
+    <p>Questions: <a href="mailto:ali.ha.al711@gmail.com">ali.ha.al711@gmail.com</a></p>
+  </div>
+</main>
+
+<footer>© 2026 OkeyMate · <a href="/">okeymate.app</a></footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.lang-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    document.querySelectorAll('.lang-tab')[{de:0,tr:1,en:2}[lang]].classList.add('active');
+  }
+
+  // Auto-detect language
+  const nav = navigator.language.slice(0,2);
+  if (nav === 'tr') setLang('tr');
+  else if (nav === 'en') setLang('en');
+</script>
+
+</body>
+</html>
