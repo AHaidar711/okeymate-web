@@ -51,25 +51,18 @@
     <p>Du wirst weitergeleitet…</p>
     <div class="spinner"></div>
     <div class="fallback" id="fallback" style="display:none">
-      <a href="https://apps.apple.com" id="ios-link">App Store öffnen</a>
-      &nbsp;·&nbsp;
-      <a href="https://play.google.com" id="android-link">Play Store öffnen</a>
+      <a href="https://apps.apple.com/app/okeymate/id6777477476" id="ios-link">App Store öffnen</a>
     </div>
   </div>
 
   <script>
-    var IOS_URL     = "https://apps.apple.com";    // ← App Store URL eintragen
-    var ANDROID_URL = "https://play.google.com";   // ← Play Store URL eintragen
+    var IOS_URL = "https://apps.apple.com/app/okeymate/id6777477476";
 
-    var ua = navigator.userAgent || "";
-    var target = /Android/i.test(ua) ? ANDROID_URL : IOS_URL;
-
-    document.getElementById("ios-link").href     = IOS_URL;
-    document.getElementById("android-link").href = ANDROID_URL;
+    document.getElementById("ios-link").href = IOS_URL;
 
     // Weiterleitung nach 600ms
     setTimeout(function() {
-      window.location.href = target;
+      window.location.href = IOS_URL;
     }, 600);
 
     // Falls Weiterleitung blockiert → Fallback-Links zeigen
